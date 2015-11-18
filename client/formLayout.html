@@ -1,0 +1,15 @@
+<template name="formLayout">
+  <div class="header-content col-xs-12 col-sm-10 col-sm-offset-1">
+    {{> yield region='header'}}
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      {{> yield}}
+    </div>
+  </div>
+  <div class="row footer">
+    <div class="fcol-xs-12 col-sm-10 col-sm-offset-1">
+      {{> yield region='footer'}}
+    </div>
+  </div>
+</template>
