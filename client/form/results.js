@@ -52,9 +52,8 @@ Template.results.events({
   'click tbody > tr': function(event) {
     var dataTable = $(event.target).closest('table').DataTable();
     var rowData = dataTable.row(event.currentTarget).data();
-    console.log("CLICKED ROW");
-     Router.go('formRead', {
+    Router.go('resultsRead', {
       id: rowData._id
-     });
+    });
   }
 });

@@ -3,8 +3,6 @@ Meteor.startup(function() {
     theme: 'light', // 'light' default or 'dark'
     publickey: '6LcEthETAAAAAL3iNZ3kWdZDCQodA9viVkBbBThg'
   });
-
-
 });
 
 
@@ -20,11 +18,6 @@ Template.formProposal.rendered = function() {
     Modal.show('preForm');
     Session.set('visited', true);
   }
-
-  //move the reCAPTCHA inside the <form>
-  // var rc = $('#recaptcha-container iframe').clone();
-  // console.log(rc);
-  // rc.appendTo('#insertCitizenForm');
 };
 
 //manages what happens after our form is successfully submitted
@@ -38,12 +31,10 @@ AutoForm.hooks({
         // reset the captcha
         grecaptcha.reset();
 
-
         if (error) {
           console.log("ERROR");
           console.log(error);
           var errorResult = {};
-          //TODO centralize this
           errorResult.errorMessage = "Apologies! There was an error. Please try again.";
           Modal.show('generalError', function() {
             return errorResult;
@@ -58,19 +49,14 @@ AutoForm.hooks({
           //CAPTCHA success and form submission succeeded
           that.resetForm();
           Modal.show('confirm');
-
-
         }
-
       });
-
       return false;
     },
     endSubmit: function(formId, template) {
       template.$('[data-schema-key],button').removeAttr("disabled");
     },
     beginSubmit: function(formId, template) {
-    //  template.$('[data-schema-key],button').removeAttr("disabled");
     }
   }
 });

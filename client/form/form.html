@@ -5,10 +5,8 @@
         <p>Thank you for visiting this sample form page. All fields are required unless otherwise indicated. </p>
         <div class="well bs-component">
           {{#autoForm collection="CitizenForms" id="insertCitizenForm" type="normal"}}
-
           <fieldset>
             <legend>Sample Complaint and Intake Form</legend>
-
             {{> afQuickFields name="helpChoice"}} {{> afQuickFields name="contact"}} {{> afQuickFields name="employer"}} {{> reCAPTCHA}}
           </fieldset>
           <hr>
@@ -20,7 +18,7 @@
   </div>
 </template>
 
-<template name="formRead">
+<template name="resultsRead">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-xs-12">
@@ -33,9 +31,6 @@
     </div>
   </div>
 </template>
-
-
-
 
 <template name="preForm">
   <div class="modal fade">
@@ -60,7 +55,6 @@
   </div>
 </template>
 
-
 <template name="generalError">
   <div class="modal fade">
     <div class="modal-dialog">
@@ -74,37 +68,30 @@
           </p>
           {{#if errorDetails}}
           <p>{{errorDetails}}</p>
-
           {{/if}}
         </div>
         <div class="modal-footer">
           <button class="btn btn-default outline" data-dismiss="modal" type="button">Close</button>
         </div>
       </div>
-
     </div>
   </div>
 </template>
-
 
 <template name="rcaError">
   <div class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
-
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           <h3 class="modal-title">PLEASE TRY AGAIN</h3>
         </div>
-
         <div class="modal-body">
           <p> Please select the "I'm not a robot" checkbox to complete the form. </p>
         </div>
-
         <div class="modal-footer">
           <button type="button" class="btn btn-default outline" data-dismiss="modal">Close</button>
         </div>
-
       </div>
     </div>
   </div>
