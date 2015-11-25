@@ -1,0 +1,28 @@
+<template name="results">
+
+  <div class="container-fluid">
+    <div class="row">
+      <h3>Sample Form Results</h3>
+      {{> ReactiveDatatable tableData=results options=optionsObject }}
+    </div>
+  </div>
+</template>
+
+
+<template name="confirm">
+  <div class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Thank You</h3>
+        </div>
+        <div class="modal-body">
+          <p class="lead"> Thank you for submitting your request.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default outline" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

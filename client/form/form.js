@@ -1,27 +1,76 @@
+Meteor.startup(function() {
+  reCAPTCHA.config({
+    theme: 'light', // 'light' default or 'dark'
+    publickey: '6LcEthETAAAAAL3iNZ3kWdZDCQodA9viVkBbBThg'
+  });
+
+
+});
+
+
+
+// initialize switchery toggle buttons (mobile-friendly)
 Template.formProposal.rendered = function() {
   var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
   elems.forEach(function(html) {
     var switchery = new Switchery(html);
   });
+  Session.setDefault('visited', false);
+  if (!Session.get('visited')) {
+    Modal.show('preForm');
+    Session.set('visited', true);
+  }
+
+  //move the reCAPTCHA inside the <form>
+  // var rc = $('#recaptcha-container iframe').clone();
+  // console.log(rc);
+  // rc.appendTo('#insertCitizenForm');
 };
 
+//manages what happens after our form is successfully submitted
+AutoForm.hooks({
+  insertCitizenForm: {
+    onSubmit: function(insertDoc, updateDoc, currentDoc) {
+      var that = this;
+      insertDoc.gRecaptchaResponse = $('#g-recaptcha-response').val();
 
-Template.formProposal.events({
-  'click .js-switch': function(event, template) {
-    var lt, mt;
+      Meteor.call('insertForm', insertDoc, function(error, result) {
+        // reset the captcha
+        grecaptcha.reset();
 
-    // poor man's toggle
-    if (event.target.name === 'employer.numberOfEmployees.lessThanTen' && event.target.checked) {
-      //console.log($("input[name='employer.numberOfEmployees.moreThanTen']"));
-      mt = $("input[name='employer.numberOfEmployees.moreThanTen']")[0];
-      if (mt.checked) {
-        $('.switchery').click();
-      }
-    } else if (event.target.name === 'employer.numberOfEmployees.moreThanTen' && event.target.checked) {
-      lt = $("input[name='employer.numberOfEmployees.lessThanTen']")[0];
-      if (lt.checked) {
-        $('.switchery').click();
-      }
+
+        if (error) {
+          console.log("ERROR");
+          console.log(error);
+          var errorResult = {};
+          //TODO centralize this
+          errorResult.errorMessage = "Apologies! There was an error. Please try again.";
+          Modal.show('generalError', function() {
+            return errorResult;
+          });
+          return false;
+        }
+
+        if (result && result.success === false) {
+          //CAPTCHA failed
+          Modal.show('rcaError');
+        } else {
+          //CAPTCHA success and form submission succeeded
+          that.resetForm();
+          Modal.show('confirm');
+
+
+        }
+
+      });
+
+      return false;
+    },
+    endSubmit: function(formId, template) {
+      template.$('[data-schema-key],button').removeAttr("disabled");
+    },
+    beginSubmit: function(formId, template) {
+    //  template.$('[data-schema-key],button').removeAttr("disabled");
     }
   }
 });
