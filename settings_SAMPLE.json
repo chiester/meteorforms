@@ -1,0 +1,9 @@
+/* Revise this file and rename it settings.json */
+
+{	"public": {
+        "ga": {
+            "id": "YOUR GOOGLE ANALYTICS ID"
+        }
+    },
+	"reCAPTCHA_private_key": "YOUR RECAPTCHA PRIVATE KEY"
+}
