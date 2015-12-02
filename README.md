@@ -22,3 +22,5 @@ If you're a Meteor beginner, here are a few things you can learn with this app:
 Feel free to clone this project, configure your own settings.json file, then deploy it to meteor.com
 
 If you have questions, contact me via email or add an issue in this repo.
+
+Because this is purely a demo/prototype, I am aware that the autopublish and insecure packages are still active. 
