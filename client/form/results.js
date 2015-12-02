@@ -12,6 +12,18 @@ Template.results.helpers({
   }
 });
 
+Template.resultsAdmin.events({
+  'click .cleardb': function(event, template) {
+    Meteor.call('clearDB', function(error, result) {
+      if (error) {
+        alert("Error clearing db: " + error);
+      }
+
+      alert("The database was successfully cleared");
+    });
+  }
+})
+
 var optionsObject = {
   columns: [{
     data: "contact.lastName",

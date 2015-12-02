@@ -39,7 +39,21 @@ Meteor.methods({
         'html': html
       });
 
+      //remove the email address
+      CitizenForms.update({
+        '_id': result
+      }, {
+        $set: {
+          notifyEmail: ''
+        }
+      });
+
 
     });
+  },
+
+  clearDB: function(){
+    CitizenForms.remove({});
+    return 'success';
   }
 });
