@@ -6,5 +6,6 @@
         }
     },
 	"reCAPTCHA_private_key": "YOUR RECAPTCHA PRIVATE KEY",
+  "adminKey": "some_secret_key_that_you_can_add_to_url_that_nobody_else_knows",
   "from": "Your Name <your email address>"
 }
