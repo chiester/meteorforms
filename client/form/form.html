@@ -28,7 +28,7 @@
         <h3>SAMPLE COMPLAINT AND INTAKE FORM</h3>
         <p>This form can be printed or saved as a PDF. </p>
         <div class="well bs-component">
-          {{> quickForm collection="CitizenForms" id="readCitizenForm" doc=this type="readonly"}}
+          {{> quickForm collection="CitizenForms" id="readCitizenForm" doc=this type="readonly" omitFields="gRecaptchaResponse"}}
         </div>
       </div>
     </div>
