@@ -15,11 +15,31 @@ Meteor.methods({
     if (verifyCaptchaResponse.data.success === false) {
       return verifyCaptchaResponse.data;
     }
-    //check(doc, CitizenForms.simpleSchema());
+    check(doc, CitizenForms.simpleSchema());
+
     CitizenForms.insert(doc, function(error, result) {
       if (error) {
         return "Error adding new application data. Please try again.";
       }
+
+      SSR.compileTemplate('notify', Assets.getText('emailTemplates/notify.html'));
+
+      Template.notify.helpers({
+        myform: function() {
+          return CitizenForms.findOne(result);
+        }
+      });
+
+      var html = SSR.render("notify");
+
+      Email.send({
+        'from': Meteor.settings.from,
+        'to': doc.notifyEmail,
+        'subject': "Form submission from " + doc.contact.firstName + ' ' + doc.contact.lastName,
+        'html': html
+      });
+
+
     });
   }
 });

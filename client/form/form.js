@@ -5,7 +5,17 @@ Meteor.startup(function() {
   });
 });
 
+Template.formProposal.events({
+  'change [name=notifyMe]': function(event, template) {
+    Session.set('notifyFlag', event.target.value);
+  }
+});
 
+Template.formProposal.helpers({
+  notifyMe: function() {
+    return Session.get('notifyFlag') === 'yes' ? true : false;
+  }
+});
 
 // initialize switchery toggle buttons (mobile-friendly)
 Template.formProposal.rendered = function() {
@@ -13,6 +23,7 @@ Template.formProposal.rendered = function() {
   elems.forEach(function(html) {
     var switchery = new Switchery(html);
   });
+  Session.setDefault('notifyFlag', "no");
   Session.setDefault('visited', false);
   if (!Session.get('visited')) {
     Modal.show('preForm');
@@ -56,7 +67,6 @@ AutoForm.hooks({
     endSubmit: function(formId, template) {
       template.$('[data-schema-key],button').removeAttr("disabled");
     },
-    beginSubmit: function(formId, template) {
-    }
+    beginSubmit: function(formId, template) {}
   }
 });
