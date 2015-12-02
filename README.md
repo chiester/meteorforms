@@ -16,7 +16,7 @@ If you're a Meteor beginner, here are a few things you can learn with this app:
 - How to allow users to drill down into an update or read-only version of the form for more granular analysis
 - How to add Modal dialog boxes to your app
 - How to use the timestampable package to make it easy to add timestamps to all inserts and updates
-- How to integrate your dynamically add 'active' classes to navigation items via iron router with the active-route package
+- How to dynamically add 'active' classes to navigation items via iron router with the active-route package
 - How to dynamically show and hide form elements (or anything else) with animation, based on previously selected form fields
 - How to add mobile-friendly toggle style radio buttons to your forms
 - And much more
