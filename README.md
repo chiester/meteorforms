@@ -26,3 +26,5 @@ Feel free to clone this project, configure your own settings.json file, then dep
 If you have questions, contact me via email or add an issue in this repo.
 
 Because this is purely a demo/prototype, I am aware that the autopublish and insecure packages are still active.
+
+Live demo available at http://hiester.com/formDemo
