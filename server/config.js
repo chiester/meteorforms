@@ -69,7 +69,7 @@ Meteor.methods({
 
 //enable CORS for serving files to bl.ocks.org, etc.
 // Listen to incoming HTTP requests, can only be used on the server
-WebApp.rawConnectHandlers.use("/public", function(req, res, next) {
+WebApp.rawConnectHandlers.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   return next();
 });
