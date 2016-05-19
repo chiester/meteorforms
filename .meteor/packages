@@ -12,15 +12,12 @@ session                 # Client-side reactive dictionary for your app
 jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
 
-standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
-insecure                # Allow all DB writes from clients (for prototyping)
 aldeed:autoform
 aldeed:simple-schema
 aldeed:collection2
-viacdn:bootstrap
 iron:router
 bookmd:autoform-toggle
 abpetkov:switchery
@@ -28,7 +25,6 @@ codechimp:autoform-masked-input
 ephemer:reactive-datatables
 zimme:collection-timestampable
 peppelg:bootstrap-3-modal
-autopublish
 momentjs:moment
 zimme:active-route
 grove:less
@@ -41,3 +37,9 @@ percolate:momentum
 msavin:jetsetter
 meteorhacks:ssr
 email
+ryw:blog
+ongoworks:security
+gfk:mailgun-api
+standard-minifier-css
+standard-minifier-js
+d3js:d3
