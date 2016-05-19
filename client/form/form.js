@@ -43,7 +43,6 @@ Template.home.onRendered(function() {
 
 
   function pulse() {
-
     var svg = d3.select("#dotty")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -72,8 +71,8 @@ Template.home.onRendered(function() {
           .ease('sine')
           .transition()
           .duration(0)
-          .attr('stroke-width', 2)
-          .attr("r", 2)
+          .attr('stroke-width', 1)
+          .attr("r", 1)
           .ease('bounce')
           .each("end", repeat);
         rctr++;
@@ -83,8 +82,6 @@ Template.home.onRendered(function() {
   }
 
   pulse();
-
-
 
 
 
@@ -114,7 +111,6 @@ Template.home.onRendered(function() {
           .attr('cy', 50)
           .ease('bounce')
           .each("end", bouncy);
-
         ctr++;
       }
     })();
