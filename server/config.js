@@ -8,6 +8,14 @@ Meteor.startup(function() {
   }
 });
 
+//db security
+// Any client may insert without restriction (these are protected from bots and spammers with ReCPATCHA)
+CitizenForms.permit(['insert']).apply();
+
+Meteor.publish("CitizenForms", function() {
+  return CitizenForms.find();
+});
+
 
 Meteor.methods({
   insertForm: function(doc) {
@@ -23,6 +31,7 @@ Meteor.methods({
       }
 
       SSR.compileTemplate('notify', Assets.getText('emailTemplates/notify.html'));
+      process.env.MAIL_URL = Meteor.settings.mailgun.MAIL_URL;
 
       Template.notify.helpers({
         myform: function() {
@@ -52,8 +61,15 @@ Meteor.methods({
     });
   },
 
-  clearDB: function(){
+  clearDB: function() {
     CitizenForms.remove({});
     return 'success';
   }
+});
+
+//enable CORS for serving files to bl.ocks.org, etc.
+// Listen to incoming HTTP requests, can only be used on the server
+WebApp.rawConnectHandlers.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  return next();
 });
