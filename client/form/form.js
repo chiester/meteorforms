@@ -26,7 +26,7 @@ Template.formProposal.helpers({
 });
 
 Template.home.onRendered(function() {
-
+  mixpanel.track('home rendered');
   var margin = {
       top: 0,
       right: 0,
