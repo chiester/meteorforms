@@ -1,121 +1,103 @@
-<template name="home">
-
-  <div class="container-fluid home">
-    <div class="row">
-      <div class="col-sm-12 col-xs-12 home">
-
-        <h2 class="text-center">Chris Hiester<svg id="dotty"></svg><svg id="dot"></svg></h2>
-        <p class="text-center">Software Developer | Certified ScrumMaster&reg;</p>
-      </div>
-    </div>
-
-  </div>
-
-
-</template>
-
-
-
 <template name="formProposal">
-  <div class="container-fluid formProposal">
-    <div class="row">
-      <div class="col-sm-8 col-xs-12">
-        <p>Thank you for visiting this sample form page. All fields are required unless otherwise indicated. </p>
-        <div class="well bs-component">
-          {{#autoForm collection="CitizenForms" id="insertCitizenForm" type="normal"}}
-          <fieldset>
-            <legend>Sample Complaint and Intake Form</legend>
-            {{> afQuickField name="helpChoice"}} {{> afQuickField name="contact"}} {{> afQuickField name="employer"}}
-            <hr> {{ >afQuickField name="notifyMe"}} {{#momentum plugin='slide-height'}} {{#if notifyMe}} {{> afQuickField name="notifyEmail"}} {{/if}}{{/momentum}}
-            <hr> {{> reCAPTCHA}}
+    <div class="container-fluid formProposal">
+        <div class="row">
+            <div class="col-sm-8 col-xs-12">
+                <p>Thank you for visiting this sample form page. All fields are required unless otherwise indicated. </p>
+                <div class="well bs-component">
+                    {{#autoForm collection="CitizenForms" id="insertCitizenForm" type="normal"}}
+                    <fieldset>
+                        <legend>Sample Form</legend>
+                        {{> afQuickField name="helpChoice"}} {{> afQuickField name="contact"}}
+                        <hr> {{ >afQuickField name="notifyMe"}} {{#momentum plugin='slide-height'}} {{#if notifyMe}} {{> afQuickField name="notifyEmail"}} {{/if}}{{/momentum}}
+                        <hr> {{> reCAPTCHA}}
 
-          </fieldset>
-          <hr>
-          <button class="btn btn-default center-block" type="submit">Send Request</button>
-          {{/autoForm}}
+                    </fieldset>
+                    <hr>
+                    <button class="btn btn-default center-block" type="submit">Send Request</button>
+                    {{/autoForm}}
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <template name="resultsRead">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12 col-xs-12">
-        <h3>SAMPLE COMPLAINT AND INTAKE FORM</h3>
-        <p>This form can be printed or saved as a PDF. </p>
-        <div class="well bs-component">
-          {{> quickForm collection="CitizenForms" id="readCitizenForm" doc=this type="readonly" omitFields="gRecaptchaResponse, notifyEmail, notifyMe"}}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <h3>SAMPLE FORM</h3>
+                <p>This form can be printed or saved as a PDF. </p>
+                <div class="well bs-component">
+                    {{> quickForm collection="CitizenForms" id="readCitizenForm" doc=this type="readonly" omitFields="gRecaptchaResponse, notifyEmail, notifyMe"}}
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <template name="preForm">
-  <div class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h3 class="modal-title">Welcome</h3>
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 class="modal-title">Welcome</h3>
+                </div>
+                <div class="modal-body">
+                    <p class="lead"> Thanks for visiting!</p>
+                    <p>This is a DEMO form.</p>
+                    <p>Feel free to fill out the form and submit test data.</p>
+                    <p>Please do not use real names.</p>
+                    <p>The database will be cleared frequently.</p>
+                    <p>Why not try it on your mobile device?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default outline" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <p class="lead"> Thanks for visiting!</p>
-          <p>This is a DEMO form.</p>
-          <p>Feel free to fill out the form and submit test data.</p>
-          <p>Please do not use real names.</p>
-          <p>The database will be cleared frequently.</p>
-          <p>Why not try it on your mobile device?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default outline" data-dismiss="modal">Close</button>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <template name="generalError">
-  <div class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h3 class="modal-title">{{level}}</h3>
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 class="modal-title">{{level}}</h3>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        {{{errorMessage}}}
+                    </p>
+                    {{#if errorDetails}}
+                    <p>{{errorDetails}}</p>
+                    {{/if}}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default outline" data-dismiss="modal" type="button">Close</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <p>
-            {{{errorMessage}}}
-          </p>
-          {{#if errorDetails}}
-          <p>{{errorDetails}}</p>
-          {{/if}}
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-default outline" data-dismiss="modal" type="button">Close</button>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <template name="rcaError">
-  <div class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h3 class="modal-title">PLEASE TRY AGAIN</h3>
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 class="modal-title">PLEASE TRY AGAIN</h3>
+                </div>
+                <div class="modal-body">
+                    <p> Please select the "I'm not a robot" checkbox to complete the form. </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default outline" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <p> Please select the "I'm not a robot" checkbox to complete the form. </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default outline" data-dismiss="modal">Close</button>
-        </div>
-      </div>
     </div>
-  </div>
 </template>

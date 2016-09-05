@@ -36,8 +36,8 @@ var optionsObject = {
       }
     }
   }, {
-    data: "employer.employerName",
-    title: "Employer Name"
+    data: "contact.email",
+    title: "Email"
   }, {
     data: "createdAt",
     title: "Created Date",
