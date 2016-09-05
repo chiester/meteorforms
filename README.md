@@ -1,4 +1,4 @@
-# Demo for Municipal Forms Proposal RFP
+# Meteor Forms Demo
 
 This application was initially intended to be a small demo that accompanied a proposal I submitted for a pilot project.
 
@@ -25,6 +25,4 @@ Feel free to clone this project, configure your own settings.json file, then dep
 
 If you have questions, contact me via email or add an issue in this repo.
 
-Because this is purely a demo/prototype, I am aware that the autopublish and insecure packages are still active.
-
-Live demo available at http://hiester.com/formDemo
+Live demo available at http://meteorforms.hiester.com/

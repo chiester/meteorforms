@@ -1,0 +1,20 @@
+/* Revise this file and rename it settings.json */
+
+{
+  "public": {
+    "ga": {
+      "id": "YOUR GOOGLE ANALYTICS ID"
+    }
+  },
+  "reCAPTCHA_private_key": "YOUR PRIVATE KEY",
+  "adminKey": "YOUR ADMIN KEY",
+  "from": "YOUR FROM EMAIL ADDRESS",
+  "mailgun": {
+    "ROOT_URL": "YOUR URL",
+    "MAIL_URL": "YOUR MAILGUN URL",
+    "mgOptions": {
+      "apiKey": "YOUR MAILGUN API KEY",
+      "domain": "YOUR MAILGUN DOMAIN"
+    }
+  }
+}
